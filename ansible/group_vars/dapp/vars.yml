@@ -1,0 +1,9 @@
+---
+
+timezone: "Europe/Berlin"
+
+base_dir: "/root"
+
+# GitHub Personal access token for accessing GitHub API
+github_api_username: sjentzsch
+github_api_token: "{{ vault_github_api_token }}"

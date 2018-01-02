@@ -1,0 +1,9 @@
+---
+- hosts: dapp
+
+  roles:
+  - { role: load_config, tags: ['always'] }
+
+  - { role: general, tags: ['general'] }
+
+  - { role: nodejs, tags: ['nodejs'] }

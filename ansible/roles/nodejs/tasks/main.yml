@@ -1,0 +1,28 @@
+---
+
+- name: Add nodesource apt key from Ubuntu keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 1655A0AB68576280
+  become: yes
+
+- name: Setup PPA for NodeJS 8.x for Ubuntu Xenial
+  apt_repository:
+    repo: deb https://deb.nodesource.com/node_8.x xenial main
+    state: present
+    filename: 'nodesource'
+  become: yes
+
+- name: Install NodeJS
+  apt:
+    name: nodejs
+#    allow_unauthenticated: yes
+    state: latest
+  become: yes
+
+- name: Upgrade npm globally
+  npm:
+    name: npm
+    state: latest
+    global: yes
+  become: yes

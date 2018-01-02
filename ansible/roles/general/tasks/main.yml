@@ -1,0 +1,39 @@
+---
+
+- name: Update apt cache (if not within last 24h)
+  apt: update_cache=yes cache_valid_time=86400
+  become: yes
+
+- name: Install common packages
+  apt: name={{item}} state=latest
+  with_items:
+    - aptitude
+    - man-db
+    - nano
+    - mlocate
+    - bash-completion
+    - unzip
+    - git
+    - rsync
+    - curl
+    - jq
+    - lsof
+    - tmux
+    - whois
+    - build-essential
+    - software-properties-common
+    - python-software-properties
+    - python-passlib
+    - python-pip
+    - python3-pip
+  become: yes
+
+- name: Upgrade to latest pip
+  pip:
+    name: pip
+    extra_args: --upgrade
+    executable: "{{ item }}"
+  with_items:
+    - pip2
+    - pip3
+  become: yes

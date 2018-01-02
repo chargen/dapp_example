@@ -1,0 +1,4 @@
+[dapp]
+localhost ansible_connection=local
+#merkur.sjentzsch.de ansible_host=merkur.sjentzsch.de
+#venus.sjentzsch.de ansible_host=venus.sjentzsch.de

@@ -1,0 +1,12 @@
+---
+
+- name: Load configuration from sample configuration file
+  include_vars: ../config/config.sample.yml
+
+- name: Check if user_specific configuration file exists
+  local_action: stat path="../config/config.yml"
+  register: config_st
+
+- name: Overwrite Configuration file from local configuration file
+  include_vars: ../config/config.yml
+  when: config_st.stat.exists == True
